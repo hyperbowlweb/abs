@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>  <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    
+    <style>*{font-size:22px;}*{  font-family: "Figtree", sans-serif;}
+        .form{font-size: 22px;margin-top: 5rem;}
+  body{margin-left: 2rem;}
+        .form button{padding-top: 0.8rem;padding-bottom: 0.8rem;}
+        button:hover{opacity: 0.5;cursor: pointer;}
+#body{display:none;text-align: center;}
+button{width: 350px;
+    text-align: left;margin-top:2rem;}
+#wrong,#correctq{display: inline;}#wrong{color: red;}#correctq{color: rgb(13, 173, 93);}
+#correct{display: none;text-align: center;}#score{display: inline;}
+button{border: 0;background:black;color: white;font-size: 16px;padding: 1rem;padding-top: 0.5rem;padding-bottom: 0.5rem;}
+.l{background: black;padding:0.5rem;border-radius:5rem;display: inline-block;color: white;text-align: center;
+}   
+#rules{
+    text-align: center;
+}.rul{display: inline-block;padding:2rem;background: whitesmoke;border-radius: 3rem;}
+.ag{text-align: center;border-radius: 2rem;}p{text-align: left;}
+
+   </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"><br>
+    <title>Cricket Quiz</title>
+</head>
+<body>
+<div id="rules">
+<div class="rul">
+    <h2>Rules & Regulations</h2><br>
+<p>
+    1.Each Correct Marks will offer 2 points <br><br>
+    2.Once Submitted cannot be changed <br><br>
+    3.Total Points are 10 <br><br>
+</p>
+<button onclick="removerule()" class="ag">Agree & Continue</button>
+
+</div>
+</div>
+
+
+
+    <div id="body">
+        <div class="form">
+            <div id="question">1. Which is the biggest Country in the world</div>
+           <button onclick="get(1)" id="a">India</button><br>
+           <button onclick="get(2)" id="b">Russia</button><br>
+           <button onclick="get(3)" id="c">Pakistan</button><br>
+           <button onclick="get(4)" id="d">China</button>
+        </div>
+    </div>
+
+    <div id="correct">
+<div class="corrects">
+    <img width="48" height="48" src="https://img.icons8.com/emoji/48/check-mark-emoji.png" alt="check-mark-emoji"/>
+    <br><br>
+    Your Score : <div id="score"></div><br><br>
+    Wrong    : <div id="wrong"></div><br><br>
+    Correct  : <div id="correctq"></div>
+    <a href="index.html"><br><br>
+        <button class="l">Back</button>
+    </a>
+</div>
+    </div>
+</body>
+<script>
+    var question=0,corrects=0
+    var questions=["Which is the biggest country in the world","Founder of Apple",
+    'Which of the company is not owned by Elon Musk','Ganga flows through which of the state',
+    'Which is founder of BlackRock',
+    'Capital of Bangladesh','President of North Korea'
+    ,'Capital of USA','Chairman of Reliance Industries'
+    ,'Ex chairman of TATA group'
+    ]
+    var correct=[2,4,4,3,1,3,2,4,2,3]
+    var optionA=['India','Neemkaroli Baba','Tesla','Chennai','Larry Page','Lahore',
+        'Narendra Modi','London','Isha Ambani','Navin Tata'
+    ]
+    var optionB=['Russia','Vijay Mishra','Neuralink','Assam','Bill Gates','Karachi','Kim jong Un',
+        'Delhi','Mukesh Ambani','Rajeev Tata'
+    ]
+    var optionC=['Pakistan','Albert Einstein','SpaceX','West Bengal','Elon Musk','Dhaka',
+        'Donald Trump','Cananda','Anant Ambani','Ratan Tata'
+    ]
+    var optionD=['China','Steve Jobs','OpenAI','Goa','Jeff Bezos',
+    'Surenderpur','Sheikh Hasina','New York City','Anil Ambani','Hardik Pandya']
+console.log(correct[0])
+
+    function get(n){
+        //checking
+        if(n==correct[question]){
+            corrects++;
+        }
+        //next question
+        question++;
+        document.getElementById('question').innerHTML=(question+1)+". "+questions[question]
+        document.getElementById('a').innerHTML=optionA[question]
+        document.getElementById('b').innerHTML=optionB[question]
+        document.getElementById('c').innerHTML=optionC[question]
+        document.getElementById('d').innerHTML=optionD[question]
+
+        console.log(corrects)
+        //checkijg for no more questions
+        if(question==10){
+document.getElementById('body').style.display='none'
+document.getElementById('correct').style.display='block'
+document.getElementById('wrong').innerHTML=10-corrects
+document.getElementById('score').innerHTML=`${corrects*2} / 20`
+document.getElementById('correctq').innerHTML=corrects
+        }
+    }
+let removerule=()=>{
+    document.getElementById('rules').style.display='none'
+    document.getElementById('body').style.display='block'
+
+}
+</script>
+</html>
